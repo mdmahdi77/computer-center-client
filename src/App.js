@@ -24,23 +24,14 @@ import { useEffect } from 'react';
 
 export const UserContext = createContext()
 
-// boni@gmail.com
-
-
-
 
 function App() {
 
   const [loggedIn, setLoggedIn] = useState({})
 
-  const restoreUser = () => {
-    const user = localStorage.getItem('user')
-   setLoggedIn(user)
-  }
-
   useEffect(() => {
-   restoreUser()
-  },[])
+   
+  }, [])
 
   return (
     <UserContext.Provider value={[loggedIn, setLoggedIn]}>
@@ -48,7 +39,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <PrivateRoute path="/dashboard">
-             <Dashboard />
+            <Dashboard />
           </PrivateRoute>
           <Route path="/service/update/:slug" component={UpdatePost} />
           <Route path="/allServices" component={AllServices} />

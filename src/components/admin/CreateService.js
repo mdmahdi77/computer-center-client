@@ -17,6 +17,7 @@ const CreateService = () => {
     const [state, setState] = useState({
         title: '',
         user: '',
+        price: '',
         image: ''
     })
 
@@ -28,7 +29,7 @@ const CreateService = () => {
         setContent(event)
     }
 
-    const { title, user } = state
+    const { title, price, user } = state
 
     const handleChange = name => event => {
         // console.log('name', name, 'event', event.target.value)
@@ -38,11 +39,11 @@ const CreateService = () => {
     const handleSubmit = event => {
         event.preventDefault()
         // console.table({title, content, user})
-        axios.post('http://localhost:8000/api/post', {title, content, user, image: imgUrl})
+        axios.post('http://localhost:8000/api/post', {title, content, price, user, image: imgUrl})
         .then(response => {
             console.log(response)
             // empty state
-            setState({...state, title: '', user: '', image: ''})
+            setState({...state, title: '', price: '', user: '', image: ''})
             setContent(content)
             // show success alert
             alert(`Post is ${response.data.post.title} created successfully`)
@@ -94,6 +95,11 @@ const CreateService = () => {
                             placeholder="Write something.."
                             style={{border: '1px solid #666'}}
                          />
+                    </div>
+                    <br />
+                    <div className="form-group">
+                        <label className="text-muted">Price</label>
+                        <input value={price} onChange={handleChange('price')} type="text" className="form-control" placeholder="Price" required />
                     </div>
                     <br />
                     <div className="form-group">

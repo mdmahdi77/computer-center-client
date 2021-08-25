@@ -15,6 +15,7 @@ const UpdatePost = (props) => {
     const [state, setState] = useState({
         title: '',
         slug: '',
+        price: '',
         user: '',
         image: ''
     })
@@ -27,15 +28,15 @@ const UpdatePost = (props) => {
         setContent(event)
     }
     
-    const { title, slug, user, image} = state
+    const { title, slug, price, user, image} = state
     
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/post/${props.match.params.slug}`)
         .then(response => {
             console.log(response)
-            const { title, content, slug, user } = response.data.post
-            setState({...state, title, slug, user, image})
+            const { title, content, slug, price, user } = response.data.post
+            setState({...state, title, price, slug, user, image})
             setContent(content)
         })
         .catch(error => console.log('Not found with this slug'))
@@ -49,12 +50,12 @@ const UpdatePost = (props) => {
     const handleSubmit = event => {
         event.preventDefault()
         // console.table({title, content, user})
-        axios.put(`http://localhost:8000/api/post/${slug}`, {title, content, user, slug, image: imgUrl})
+        axios.put(`http://localhost:8000/api/post/${slug}`, {title, content, user, price, slug, image: imgUrl})
         .then(response => {
             console.log(response)
-            const { title, content, slug, user, image } = response.data.post
+            const { title, content, slug, price, user, image } = response.data.post
             // empty state
-            setState({...state, title: '', content: '', user: '', image: ''})
+            setState({...state, title: '', price: '', content: '', user: '', image: ''})
             // show success alert
             alert(`Post is ${title} updated successfully`)
 
@@ -99,6 +100,11 @@ const UpdatePost = (props) => {
                             placeholder="Write something.."
                             style={{border: '1px solid #666'}}
                          />
+                    </div>
+                    <br />
+                    <div className="form-group">
+                        <label className="text-muted">Price</label>
+                        <input value={price} onChange={handleChange('price')} type="text" className="form-control" placeholder="Price" required />
                     </div>
                     <br />
                     <div className="form-group">
