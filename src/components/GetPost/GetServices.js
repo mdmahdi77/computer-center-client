@@ -6,6 +6,7 @@ import Preloader from '../Home/PreLoader';
 import { Link } from 'react-router-dom';
 import renderHTML from 'react-render-html';
 import { Card, Col, Row } from 'react-bootstrap';
+import '../../App.css'
 
 const GetServices = () => {
 
@@ -30,17 +31,22 @@ const GetServices = () => {
 
     return (
         <Fragment>
-            <div className="container my-5" id="services">
+            <div className="container-fluid my-5" id="services">
+                    <h1 className="display-4 text-center font-weight-bolder mt-5 pt-5">OUR SERVICES</h1>
+                    <div className="row">
+                    <div className="col-md-8 offset-md-2">
+                        <h5 className="text-center mt-3 mb-5 pb-5 text-secondary">Here Is More Services, We Are Made It Easy For Every Customer Which Will Be More Effective And Effortless For You.</h5>
+                    </div>
+                </div>
                 <Preloader visibility={preloader} />
-                    <h1 className="display-4 text-center font-weight-bolder my-5 py-5">OUR SERVICES</h1>
                 <Row sm={2} xs={1} md={3} className="g-4">
                     {
                         posts.map(post => (
                             <Col>
-                                <Card className="border-none">
+                                <Card className="cardStyle">
                                     <Link className="text-decoration-none" to={`/post/${post.slug}`}>
                                         <Card.Img variant="top" src={post.image} width="300px" height="200px" />
-                                        <Card.Title className="ml-3 mt-3"><h1 className="font-weight-bold text-primary">{post.title}</h1></Card.Title>
+                                        <Card.Title className="mt-3"><h1 className="font-weight-bold text-danger">{post.title}</h1></Card.Title>
                                     </Link>
                                     <Card.Body className="d-flex justify-content-between align-item-center">
                                         <Card.Text><span className="font-weight-bold text-dark">Costs:</span> <span className="font-weight-bold text-danger">$</span>{post.price}</Card.Text>

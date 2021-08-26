@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import axios from 'axios';
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
-// import { Link } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
 import { Link, useHistory } from 'react-router-dom';
 import { UserContext } from './../../App';
 import logo from '../../images/logo.png'
@@ -34,7 +34,7 @@ const Header = () => {
     }
 
     return (
-        <Navbar sticky="top" collapseOnSelect expand="lg" bg="secondary" className="py-3 navbar">
+        <Navbar sticky="top" collapseOnSelect expand="lg" bg="info" className="py-3 navbar">
             <Container>
                 <Navbar.Brand href="#home" className="logo">
                     <img src={logo} alt="logo" />
@@ -50,11 +50,11 @@ const Header = () => {
                         </Nav.Link>
 
                         <Nav.Link href="#services">
-                            <Link className="text-decoration-none text-dark font-weight-bold">Services</Link>
+                            <ScrollLink to="services" className="text-decoration-none text-dark font-weight-bold">Services</ScrollLink>
                         </Nav.Link>
 
                         <Nav.Link href="#features">
-                            <Link className="text-decoration-none text-dark font-weight-bold">Features</Link>
+                            <ScrollLink to="features" className="text-decoration-none text-dark font-weight-bold">Features</ScrollLink>
                         </Nav.Link>
                         {loggedIn ?
                             <NavDropdown title={`${loggedIn?.name}`} className="text-dark font-weight-bold" id="collasible-nav-dropdown">

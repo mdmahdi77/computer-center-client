@@ -71,7 +71,7 @@ const Features = () => {
 
     return (
         <Fragment>
-            <div className="container">
+            <div className="container mb-5 pb-5" id="features">
                 <h1 className="display-4 text-center font-weight-bolder mt-5 pt-5">CORE FEATURES</h1>
                 <div className="row">
                     <div className="col-md-8 offset-md-2">
@@ -84,8 +84,7 @@ const Features = () => {
                             <Col>
                                 <Card className="feature">
                                     <img src={feature.img} width="100px" />
-                                    <Card.Title className="mt-3">{feature.title}</Card.Title>
-                                        
+                                    <Card.Title className="mt-3">{feature.title}</Card.Title>   
                                 </Card>
                             </Col>
                         ))

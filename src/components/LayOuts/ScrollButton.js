@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
 
 const ScrollButton = () => {
 
@@ -28,20 +30,16 @@ const ScrollButton = () => {
     const ButtonStyles = styled.div`
         position: fixed;
         width: 100%;
-        left: 1%;
+        left: 95%;
         bottom: 100px;
         height: 20px;
-        font-size: 3rem;
         z-index: 1;
         cursor: pointer;
-        color: blue;
     `
 
     return (
         <ButtonStyles>
-            <Button className="my-5 text-center" onClick={scrollToTop} style={{ display: visible ? 'inline' : 'none' }}>
-                Top
-            </Button>
+            <FontAwesomeIcon className="angleUp" onClick={scrollToTop} style={{ display: visible ? 'inline' : 'none' }} icon={faAngleUp} />
         </ButtonStyles>
     );
 };
